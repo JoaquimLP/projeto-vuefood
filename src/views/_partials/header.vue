@@ -1,0 +1,17 @@
+<template>
+  	<header>
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-vuefood">
+			<div class="container">
+        <router-link :to="{name: 'site.home'}" class="nav-link" ><img src="@/assets/imgs/logo-vuefood.png" alt="VueFood" class="logo"></router-link>
+				<div>
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item nav-cart active">
+							<router-link :to="{name: 'site.cart'}" class="nav-link" ><i class="fas fa-shopping-cart"></i> (2)</router-link>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+</template>

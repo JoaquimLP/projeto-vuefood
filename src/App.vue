@@ -1,10 +1,21 @@
 <template>
-  <div id="nav">
-    <ul>
-        <li><router-link :to="{name: 'site.home'}">Home</router-link></li>
-        <li><router-link :to="{name: 'site.products'}">Loja</router-link></li>
-        <li><router-link :to="{name: 'site.cart'}">Carrinho</router-link></li>
-    </ul>
-    <router-view></router-view>
-  </div>
+    <div id="nav">
+      <header-component></header-component>
+        <!-- Page Content -->
+      <div class="container container-body">
+        <router-view></router-view>
+      </div>
+      <footer-component></footer-component>
+    </div>
 </template>
+
+<script>
+import HeaderComponent from '@/views/_partials/header'
+import FooterComponent from '@/views/_partials/footer'
+export default {
+    components:{
+        HeaderComponent,
+        FooterComponent,
+    },
+}
+</script>
