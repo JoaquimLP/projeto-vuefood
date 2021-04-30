@@ -6,7 +6,7 @@
 
 
         <div class="list-categories">
-          <a href="#" class="list-categories__item active"><div class="icon"> <font-awesome-icon icon="fa-pizza-slice" /></div> <span> Pizza </span> </a>
+          <a href="#" class="list-categories__item active"><div class="icon"><i class="fas fa-pizza-slice"></i> </div> <span> Pizza </span> </a>
           <a href="#" class="list-categories__item active"><div class="icon"><i class="fas fa-hamburger"></i> </div> <span> Sanduiche </span> </a>
           <a href="#" class="list-categories__item active"><div class="icon"><i class="fas fa-ice-cream"></i> </div> <span> Sorvetes </span> </a>
         </div>

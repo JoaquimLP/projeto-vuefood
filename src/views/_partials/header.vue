@@ -9,6 +9,9 @@
 						<li class="nav-item nav-cart active">
 							<router-link :to="{name: 'site.cart'}" class="nav-link" ><i class="fas fa-shopping-cart"></i> (2)</router-link>
 						</li>
+						<li class="nav-item nav-cart">
+							<router-link :to="{name: 'auth.login'}" class="nav-link" >Entrar</router-link>
+						</li>
 					</ul>
 				</div>
 			</div>
