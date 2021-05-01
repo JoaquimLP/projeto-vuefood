@@ -1,4 +1,5 @@
 require ('./bootstrap')
+require('./plugins/index')
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'

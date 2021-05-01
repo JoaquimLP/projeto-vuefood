@@ -1,9 +1,11 @@
 import { createStore } from 'vuex'
+import empresa from './modules/empresa'
 
-// Create a new store instance.
+// Cria uma nova instância do store.
 const store = createStore({
-  state: {
-    patients: []
+  modules: {
+    empresa
   }
 })
-export default store;
+
+export default store
