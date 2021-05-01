@@ -28,16 +28,23 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 export default {
   mounted() {
     this.getEmpresas()
+      .catch(response => {
+        this.$toast.error("Fallha ao carregar as empresas");
+      })
   },
 
   computed: {
-    empresas () {
+   /*  empresas () {
       return this.$store.state.empresa.item
-    }
+    } */
+
+    ...mapState({
+      empresas: state => state.empresa.item
+    })
   },
   methods: {
     ...mapActions(['getEmpresas'])
