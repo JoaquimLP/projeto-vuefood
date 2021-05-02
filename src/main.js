@@ -12,11 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 //Vue.config.productionTip = false
 
-/**
- * Global Components
- */
 
-Vue.component('preloader-component', () => import('./components/Preloader'))
 
 const app = createApp(App)
 

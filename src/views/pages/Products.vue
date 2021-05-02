@@ -1,7 +1,7 @@
 <template>
     <div>
       <!-- About Tenant and Categories -->
-    <h1 class="my-4 title-tenant text-center">Nome do Tenant</h1>
+    <h1 class="my-4 title-tenant text-center">{{company.nome}}</h1>
     <div class="row">
 
 
@@ -139,3 +139,24 @@
     <!-- /.row -->
     </div>
 </template>
+
+<script>
+import {mapActions, mapState, mapMutations} from 'vuex'
+
+export default {
+  props: ['companyFlag'],
+
+  created () {
+    if(this.company.name == ""){
+      return this.$router.push({name: 'site.home'})
+    }
+  },
+
+  computed: {
+
+    ...mapState({
+      company: state => state.empresa.companySelected
+    })
+  },
+}
+</script>

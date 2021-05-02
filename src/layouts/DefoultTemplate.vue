@@ -1,5 +1,6 @@
 <template>
   <div>
+    <preloader-component></preloader-component>
     <header-component></header-component>
     <!-- Page Content -->
     <div class="container container-body">
@@ -12,10 +13,12 @@
 <script>
 import HeaderComponent from "@/views/_partials/header";
 import FooterComponent from "@/views/_partials/footer";
+import PreloaderComponent from "@/views/components/Preloader";
 export default {
   components: {
     HeaderComponent,
     FooterComponent,
+    PreloaderComponent,
   },
 };
 </script>

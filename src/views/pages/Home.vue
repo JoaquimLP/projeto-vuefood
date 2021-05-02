@@ -7,13 +7,14 @@
         <div class="row my-4">
           <div class="col-lg-4 col-md-4 col-6 mb-4" v-for="(company, index) in empresas.data"  :key="index">
             <div class="restaurant-card">
-              <router-link :to="{name: 'site.products'}" class="logo">
+              <a href="#" @click.prevent="gotStoreCompany(company)" class="logo">
                 <img class="card-img-top" v-if="company.logo" :src="company.logo" :alt="company.logo"/>
                 <img class="card-img-top" v-else src="@/assets/imgs/vue-food.png" alt="company.logo"/>
-              </router-link>
+              </a>
               <div class="restaurant-card-body">
                 <h3>
-                  <router-link :to="{name: 'site.products'}">{{company.nome}}</router-link>
+                  <!--<router-link :to="{name: 'site.products', params: {companyFlag: company.flag}}">{{company.nome}}</router-link>-->
+                  <a href="#" @click.prevent="gotStoreCompany(company)">{{company.nome}}</a>
                 </h3>
               </div>
             </div>
@@ -28,7 +29,7 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
+import {mapActions, mapState, mapMutations} from 'vuex'
 export default {
   mounted() {
     this.getEmpresas()
@@ -47,7 +48,16 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['getEmpresas'])
+    ...mapActions(['getEmpresas']),
+
+    ...mapMutations ({
+      setCompany: 'SET_COMPANY_SELECTED'
+    }),
+
+    gotStoreCompany(company){
+      this.setCompany(company)
+      this.$router.push({name: 'site.products', params: {companyFlag: company.flag}})
+    }
   }
 }
 </script>
