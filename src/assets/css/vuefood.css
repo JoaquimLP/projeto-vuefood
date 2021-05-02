@@ -295,6 +295,15 @@ body {
   background: #fbd560;
 }
 
+.list-categories .active_item {
+  background: #fbd560;
+}
+
+.list-categories .active_item .icon {
+  background: #fff;
+  color:#000;
+}
+
 .list-categories a:hover .icon {
   background: #fff;
   color:#000;
@@ -348,7 +357,7 @@ body {
   font-size: 16px;
 }
 @media (min-width: 768px) {
-  
+
   .list-categories a {
     flex-direction: column;
     width: 90px;
@@ -408,7 +417,7 @@ body {
   margin-right: 0;
   background:  #fff;
   font-weight: 500;
-  transition: background .5s ease; 
+  transition: background .5s ease;
 }
 .shopping-cart .btn-comprando:hover {
   margin-left: auto;
