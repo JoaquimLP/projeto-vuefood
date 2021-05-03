@@ -32,8 +32,11 @@
             <h5>R$ 12,99</h5>
             <p class="card-text">{{produto.descricao}}</p>
           </div>
-          <div class="card-footer card-footer-custom">
-          <router-link :to="{name: 'site.cart'}">Adicionar no Carrinho <i class="fas fa-cart-plus"></i></router-link>
+          <div :class="['card-footer', 'card-footer-custom', {'disabled': productInCart(produto)}]">
+          <!--<router-link :to="{name: 'site.cart'}"></router-link>-->
+            <a href="#" @click.prevent="addProdCart(produto)">
+              Adicionar no Carrinho <i class="fas fa-cart-plus"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -70,6 +73,8 @@ export default {
       company: state => state.empresa.companySelected,
       categorias: state => state.empresa.categoriaCompanySelected,
       products: state => state.empresa.productsSelected,
+
+      productCart: state => state.cart.procucts,
     })
 
   },
@@ -86,6 +91,10 @@ export default {
     ...mapActions([
       'getCategoriesByCompany', 'getProductByCompany'
     ]),
+
+    ...mapMutations({
+      addProdCart: 'ADD_PRODUCT_CART',
+    }),
 
     loadProdutos (){
       const params = {
@@ -110,6 +119,16 @@ export default {
 
     categoriaInFilter(categoria) {
       return categoria == this.filters.categoria ? 'active_item' : ''
+    },
+
+    productInCart(product){
+      let inCart = false
+      this.productCart.map((prodCart, index) => {
+        if(prodCart.uuid === product.uuid){
+          inCart = true
+        }
+      })
+      return inCart
     }
   },
 }

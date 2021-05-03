@@ -180,13 +180,13 @@ body {
   background: #4b830d;
 }
 /* end car redesign */
-.disabled .card-footer-custom {
-    background: #d89e9f;
-    border-top: 1px solid #d89e9f;
+.disabled{
+    background: #4b830d;
+    border-top: 1px solid #4b830d;
     cursor: no-drop;
 }
 
-.disabled .card-footer-custom a{
+.disabled a{
     cursor: no-drop;
 }
 
@@ -316,6 +316,11 @@ body {
 .list-categories a:hover i {
   /* transform: scale(1.2); */
   font-size: 2rem;
+}
+
+.disabled_cart {
+  opacity: .65;
+  background-color: #4b830d;
 }
 
 /* .list-categories a {
