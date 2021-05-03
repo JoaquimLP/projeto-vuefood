@@ -15,8 +15,8 @@ export default {
     },
 
     REOMOVE_PRODUCT_CART (state, product) {
-      state.procucts.filters((value, index) => {
-        return value.uuid != product.uuid
+      state.procucts = state.procucts.filter((value, index) => {
+        return value.uuid !== product.uuid
       })
     },
 
@@ -31,7 +31,7 @@ export default {
     },
 
     DECREMENT_QTY_PRODUCT_CART (state, product) {
-      state.procucts = state.procucts.filters((value, index) => {
+      state.procucts = state.procucts.filter((value, index) => {
         if(value.uuid == product.uuid){
           state.procucts[index].qtd =  state.procucts[index].qtd - 1
         }

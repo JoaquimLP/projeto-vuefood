@@ -29,7 +29,7 @@
             <h4 class="card-title">
               <a href="#">{{produto.nome}}</a>
             </h4>
-            <h5>R$ 12,99</h5>
+            <h5>R$ {{produto.preco}}</h5>
             <p class="card-text">{{produto.descricao}}</p>
           </div>
           <div :class="['card-footer', 'card-footer-custom', {'disabled': productInCart(produto)}]">
@@ -101,7 +101,7 @@ export default {
         token: this.company.uuid,
 
       }
-      console.log(this.filters.categoria)
+      //console.log(this.filters.categoria)
       if (this.filters.categoria != "") {
         params.categoria = [
           this.filters.categoria

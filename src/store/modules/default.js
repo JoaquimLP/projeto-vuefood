@@ -12,4 +12,4 @@ export const mutations = {
     state.textPreloader = 'Carregando...'
   }
 }
-console.log(state)
+//console.log(state)

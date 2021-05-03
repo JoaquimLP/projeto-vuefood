@@ -14,7 +14,7 @@ const actions = {
   },
 
   getCategoriesByCompany ({commit}, token) {
-    console.log(token)
+    //console.log(token)
     commit('SET_PRELOADER', true)
     commit('SET_TEXTPRELOADER', 'Carregando as empresas...')
     setTimeout(() => {
