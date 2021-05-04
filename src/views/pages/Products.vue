@@ -34,7 +34,8 @@
           </div>
           <div :class="['card-footer', 'card-footer-custom', {'disabled': productInCart(produto)}]">
           <!--<router-link :to="{name: 'site.cart'}"></router-link>-->
-            <a href="#" @click.prevent="addProdCart(produto)">
+            <span v-if="productInCart(produto)"> Adicionar no Carrinho <i class="fas fa-cart-plus"></i></span>
+            <a v-else href="#" @click.prevent="addProdCart(produto)">
               Adicionar no Carrinho <i class="fas fa-cart-plus"></i>
             </a>
           </div>
