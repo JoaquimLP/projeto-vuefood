@@ -392,6 +392,18 @@ body {
   transition:  all .7s ease;
 }
 
+.nav-cart-login {
+  width: auto;
+  padding-top: 14px;
+  height: 50px;
+  background: #a92f2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition:  all .7s ease;
+}
+
 .nav-cart:hover {
   background:  #4b830d;
 }
@@ -487,6 +499,14 @@ body {
 }
 .details ul li {
   margin-bottom: 10px;
+}
+
+.logout {
+  color: #FFF;
+}
+
+.logout:hover{
+  color: #00701a;
 }
 
 .details-card {

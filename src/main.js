@@ -21,3 +21,4 @@ app.use(Toaster)
 app.use(store)
 
 app.mount('#app')
+store.dispatch('getMe')

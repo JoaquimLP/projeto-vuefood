@@ -9,7 +9,13 @@
 						<li class="nav-item nav-cart active">
 							<router-link :to="{name: 'site.cart'}" class="nav-link" ><i class="fas fa-shopping-cart"></i> ({{produtoCart.length}})</router-link>
 						</li>
-						<li class="nav-item nav-cart">
+						<li class="nav-item nav-cart-login" v-if="me.name">
+              <p v-if="me.name" class="nav-link">
+                Olá {{me.name}}
+                <a href="#" @click.prevent="logout" class="logout">(Sair)</a>
+              </p>
+						</li>
+						<li class="nav-item nav-cart" v-else>
 							<router-link :to="{name: 'auth.login'}" class="nav-link" >Entrar</router-link>
 						</li>
 					</ul>
@@ -20,12 +26,20 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 export default {
   computed: {
      ...mapState({
-      produtoCart: state => state.cart.procucts
-    })
+      produtoCart: state => state.cart.procucts,
+      me: state => state.auth.me,
+    }),
+
   },
+
+  methods: {
+     ...mapActions([
+      'logout'
+    ])
+  }
 }
 </script>
