@@ -7,16 +7,16 @@
 				<div>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item nav-cart active">
-							<router-link :to="{name: 'site.cart'}" class="nav-link" ><i class="fas fa-shopping-cart"></i> ({{produtoCart.length}})</router-link>
+							<router-link :to="{name: 'site.cart'}" class="nav-link text-light" ><i class="fas fa-shopping-cart"></i> ({{produtoCart.length}})</router-link>
 						</li>
 						<li class="nav-item nav-cart-login" v-if="me.name">
               <p v-if="me.name" class="nav-link">
-                Olá {{me.name}}
-                <a href="#" @click.prevent="logout" class="logout">(Sair)</a>
+                <router-link :to="{name: 'site.auth.pedidos'}" class="text-light mr-2">Olá {{me.name}}</router-link>
+                <a href="#" @click.prevent="logout" class="logout"> (Sair)</a>
               </p>
 						</li>
 						<li class="nav-item nav-cart" v-else>
-							<router-link :to="{name: 'auth.login'}" class="nav-link" >Entrar</router-link>
+							<router-link :to="{name: 'auth.login'}" class="nav-link text-light mr-2" >Entrar</router-link>
 						</li>
 					</ul>
 				</div>

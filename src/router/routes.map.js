@@ -3,12 +3,25 @@ import Product from '@/views/pages/Products'
 import Cart from '@/views/pages/Cart'
 import Login from '@/views/pages/auth/Login'
 import Register from '@/views/pages/auth/Register'
+import Pedidos from '@/views/pages/auth/pedidos/Pedidos'
+import DetalhesPedidos from '@/views/pages/DetalhesPedidos'
 
 const routes = [
   {
     path: '/',
     component: () => import('@/layouts/DefoultTemplate'),
     children: [
+      {
+        path: '/pedidos/:identify',
+        component: DetalhesPedidos,
+        name: 'site.pedidos',
+        props: true,
+      },
+      {
+        path: '/meus-pedidos',
+        component: Pedidos,
+        name: 'site.auth.pedidos'
+      },
       {
         path: '/',
         component: Home,
@@ -20,11 +33,13 @@ const routes = [
         name: 'site.products',
         props: true,
       },
+
       {
         path: '/carinho',
         component: Cart,
         name: 'site.cart'
       },
+
     ]
   },
   {

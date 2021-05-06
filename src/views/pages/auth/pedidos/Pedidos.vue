@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <div class="my-4">
+      <h1 class="title-tenant">Meus Pedidos</h1>
+    </div>
+
+    <div class="my-orders my-4">
+      <div class="my-table-header mb-4">
+        <div class="text-center"><b>Nª Pedido</b></div>
+        <div class="text-center"><b>Data</b></div>
+        <div class="text-center"><b>Valor Total</b></div>
+        <div class="text-center"><b>Detalhes</b></div>
+      </div>
+
+      <div class="my-table" v-for="(pedido, index) in pedidos" :key="index">
+        <div class="text-center">{{pedido.identify}}</div>
+        <div class="text-center">{{pedido.date}}</div>
+        <div class="text-center">{{pedido.total}}</div>
+        <div class="text-center">
+          <a href="detalhes-pedido.html" class="btn btn-danger">Detalhes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import {mapActions, mapState, mapMutations} from 'vuex'
+export default {
+ computed: {
+
+    ...mapState({
+      pedidos: state => state.pedido.meusPedidos
+    })
+
+  },
+
+  created() {
+    this.getMeusPedidos().catch(response => {this.$toast.error("Fallha ao carregar os pedidos")});
+  },
+
+  methods: {
+    ...mapActions([
+      'getMeusPedidos'
+    ]),
+  },
+}
+</script>
