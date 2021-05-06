@@ -17,7 +17,7 @@
         <div class="text-center">{{pedido.date}}</div>
         <div class="text-center">{{pedido.total}}</div>
         <div class="text-center">
-          <a href="detalhes-pedido.html" class="btn btn-danger">Detalhes</a>
+          <router-link :to="{name: 'site.pedidos', params: {identify: pedido.identify}}" class="btn btn-danger">Detalhes</router-link>
         </div>
       </div>
     </div>
@@ -30,12 +30,16 @@ export default {
  computed: {
 
     ...mapState({
-      pedidos: state => state.pedido.meusPedidos
+      pedidos: state => state.pedido.meusPedidos,
+      authenticated: state => state.auth.authenticated
     })
 
   },
 
   created() {
+    if(this.authenticated != true){
+      return this.$router.push({name: 'site.home'})
+    }
     this.getMeusPedidos().catch(response => {this.$toast.error("Fallha ao carregar os pedidos")});
   },
 

@@ -9,74 +9,46 @@
       <div class="col-sm-6">
         <ul class="p-0">
           <li><b>Número:</b> {{identify}}</li>
-          <li><b>Total:</b> {{pedido.total}}</li>
-          <li><b>Data:</b> {{pedido.date}}</li>
+          <li><b>Total:</b> {{meusPedidos.total}}</li>
+          <li><b>Data:</b> {{meusPedidos.date}}</li>
           <li>
             <b>Status:</b>
-            <span class="badge bg-success text-light p-2">{{pedido.status}}</span>
+            <span class="badge bg-success text-light p-2">{{meusPedidos.status}}</span>
           </li>
         </ul>
       </div>
       <div class="col-sm-6">
         <ul class="p-0">
-          <li v-if="pedido.mesa.nome">
+          <li v-if="meusPedidos.mesa.nome">
             <span>Mesa</span>
             <ul class="p-0">
-              <li><b>Identificador:</b> Não Informado</li>
-              <li><b>Descrição:</b> Não Informado</li>
+              <li><b>Identificador:</b> {{meusPedidos.mesa.nome}}</li>
+              <li><b>Descrição:</b> {{meusPedidos.mesa.descricao}}</li>
             </ul>
           </li>
-          <li>
+          <li v-if="meusPedidos.cliente.name">
             <span>Cliente</span>
             <ul class="p-0">
-              <li><b>Nome:</b> Carlos</li>
-              <li><b>E-mail:</b> carlos@especializati.com.br</li>
+              <li><b>Nome:</b> {{meusPedidos.cliente.name}}</li>
+              <li><b>E-mail:</b> {{meusPedidos.cliente.email}}</li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
     <!-- details order -->
-
     <hr />
-
     <div class="row my-4">
       <div class="col-12">
         <h4>Produtos</h4>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-4 my-1">
+      <div class="col-12 col-md-6 col-lg-4 my-1" v-for="(produto, index) in meusPedidos.produtos" :key="index">
         <div class="details-card">
-          <a href="vitrine-tenant.html"
-            ><img class="card-img-top" src="imgs/pizza.png" alt=""
-          /></a>
+          <a href="#"><img class="card-img-top" :src="produto.image" :alt="produto.produto"></a>
           <div class="details-card-body">
-            <h5>Pizza</h5>
-            <p><b>R$: 10,00</b></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 my-1">
-        <div class="details-card">
-          <a href="vitrine-tenant.html"
-            ><img class="card-img-top" src="imgs/pizza.png" alt=""
-          /></a>
-          <div class="details-card-body">
-            <h5>Pizza</h5>
-            <p><b>R$: 10,00</b></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 my-1">
-        <div class="details-card">
-          <a href="vitrine-tenant.html"
-            ><img class="card-img-top" src="imgs/pizza.png" alt=""
-          /></a>
-          <div class="details-card-body">
-            <h5>Pizza</h5>
-            <p><b>R$: 10,00</b></p>
+            <h5>{{produto.produto}}</h5>
+            <p><b>R$: {{produto.preco}}</b></p>
           </div>
         </div>
       </div>
@@ -90,12 +62,17 @@ import {mapActions, mapState, mapMutations} from 'vuex'
 export default {
   props:['identify'],
   created() {
-    console.log(this.identify)
+    this.getDetalhesPedido(this.identify).then(response => {
+      this.meusPedidos = Object.assign(this.meusPedidos, response.data.data)
+    }).catch(response => {
+      this.$toast.error("Fallha ao carregar detlahes do pedidos");
+      return this.$router.push({name: 'site.home'})
+    })
   },
 
   data() {
     return {
-      pedido: {
+      meusPedidos: {
         identify: '',
         date: '',
         mesa: '',
@@ -113,10 +90,16 @@ export default {
           nome: '',
           logo: '',
         },
-        produto: [],
+        produtos: [],
         avaliacao: [],
       }
     }
+  },
+
+  methods: {
+    ...mapActions([
+      'getDetalhesPedido'
+    ]),
   },
 
 }

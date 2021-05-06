@@ -39,10 +39,17 @@ const actions = {
     .catch((error) => {
       localStorage.removeItem(TOKEN_NAME)
     }).finally(() => commit('SET_PRELOADER', false))
-  }
+  },
+
+  getDetalhesPedido ({commit}, identfy) {
+    commit('SET_PRELOADER', true)
+    commit('SET_TEXTPRELOADER', 'Carregando...')
+
+    return axios.get(`/orders/${identfy}`).finally(() => commit('SET_PRELOADER', false))
+  },
 }
 
-console.log(state)
+//console.log(state)
 
 export default {
   state, mutations, actions

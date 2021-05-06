@@ -83,8 +83,8 @@ export default {
 
       this.login(params)
         .then((response) => {
-          this.$toast.success("Login efetuado com sucesso");
-          this.$router.push({name: 'site.home'})
+          this.$toast.success("Login efetuado com sucesso");//
+          this.$router.push({name: 'site.auth.pedidos'})
         })
         .catch((error) => {
           const response = error.response;

@@ -12,7 +12,7 @@
 						<li class="nav-item nav-cart-login" v-if="me.name">
               <p v-if="me.name" class="nav-link">
                 <router-link :to="{name: 'site.auth.pedidos'}" class="text-light mr-2">Olá {{me.name}}</router-link>
-                <a href="#" @click.prevent="logout" class="logout"> (Sair)</a>
+                <a href="#" @click.prevent="sair" class="logout"> (Sair)</a>
               </p>
 						</li>
 						<li class="nav-item nav-cart" v-else>
@@ -35,11 +35,19 @@ export default {
     }),
 
   },
-
   methods: {
-     ...mapActions([
+    ...mapActions([
       'logout'
-    ])
+    ]),
+    sair(){
+      this.logout()
+              .then((response) => {
+                this.$toast.success("Muito obrigado por acessar ao VueFood");//site.auth.pedidos
+                this.$router.push({name: 'site.home'})
+              })
+              .finally(() => (this.loading = false));
+    }
+
   }
 }
 </script>
