@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {TOKEN_NAME} from '@/configs/api'
+import 'core-js/features/promise';
 require('promise.prototype.finally').shim();
 
 const state = {
@@ -46,6 +47,54 @@ const actions = {
     commit('SET_TEXTPRELOADER', 'Carregando...')
 
     return axios.get(`/orders/${identfy}`).finally(() => commit('SET_PRELOADER', false))
+  },
+
+  aviacaoPedido({commit}, params){
+    const token = localStorage.getItem(TOKEN_NAME)
+    if(!token){
+      Promise.reject();
+    }
+    return axios.post(`/auth/${params.identify}/avaliacao`, params, {
+      headers:{
+        'Authorization': `Bearer ${token}`
+      }
+    })
+  },
+
+  createPedido({commit}, params){
+    return new Promise((resolve, reject) => {
+
+      axios.post(`/create-orders`, params)
+        .then(reponse => {
+          commit('CLEAR_CART')
+          resolve(reponse.data.data)
+        })
+        .catch(reponse => reject(reponse.error))
+        .finally(() => commit('SET_PRELOADER', false))
+    })
+  },
+
+  createPedidoAuth({commit}, params){
+    return new Promise((resolve, reject) => {
+      const token = localStorage.getItem(TOKEN_NAME)
+      if(!token){
+        reject();
+      }
+
+      axios.post(`/auth/create-orders`, params, {
+          headers:{
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        .then(reponse => {
+          commit('CLEAR_CART')
+          resolve(reponse.data.data)
+        })
+        .catch(reponse => reject(reponse.error))
+        .finally(() => commit('SET_PRELOADER', false))
+    })
+
+
   },
 }
 

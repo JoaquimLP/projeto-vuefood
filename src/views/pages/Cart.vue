@@ -45,7 +45,7 @@
         </div>
       </div>
       <!-- end card body -->
-      <a href="" class="cart-finalizar">Finalizar</a>
+      <chekout-component></chekout-component>
     </div>
     <!-- cart-->
   </div>
@@ -53,7 +53,11 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import ChekoutComponent from "@/views/_partials/Chekout";
 export default {
+  components: {
+    ChekoutComponent,
+  },
   computed: {
     ...mapState({
       products: (state) => state.cart.procucts,

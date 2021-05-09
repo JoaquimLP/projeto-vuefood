@@ -125,7 +125,7 @@ export default {
     productInCart(product){
       let inCart = false
       this.productCart.map((prodCart, index) => {
-        if(prodCart.uuid === product.uuid){
+        if(prodCart.identify === product.identify){
           inCart = true
         }
       })

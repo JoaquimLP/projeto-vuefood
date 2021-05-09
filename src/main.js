@@ -5,6 +5,7 @@ import Toaster from '@meforma/vue-toaster';
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { VueStars } from "vue-stars"
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,6 +20,7 @@ const app = createApp(App)
 app.use(router)
 app.use(Toaster)
 app.use(store)
+app.component("vue-stars", VueStars)
 
 app.mount('#app')
 store.dispatch('getMe')

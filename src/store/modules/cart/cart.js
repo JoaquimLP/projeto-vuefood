@@ -9,20 +9,20 @@ export default {
     ADD_PRODUCT_CART (state, product) {
       state.procucts.push({
         qtd: 1,
-        uuid: product.uuid,
+        identify: product.identify,
         product,
       })
     },
 
     REOMOVE_PRODUCT_CART (state, product) {
       state.procucts = state.procucts.filter((value, index) => {
-        return value.uuid !== product.uuid
+        return value.identify !== product.identify
       })
     },
 
     INCREMENT_QTY_PRODUCT_CART (state, product) {
       state.procucts = state.procucts.map((value, index) => {
-        if(value.uuid == product.uuid){
+        if(value.identify == product.identify){
           state.procucts[index].qtd ++
         }
 
@@ -32,7 +32,7 @@ export default {
 
     DECREMENT_QTY_PRODUCT_CART (state, product) {
       state.procucts = state.procucts.filter((value, index) => {
-        if(value.uuid == product.uuid){
+        if(value.identify == product.identify){
           state.procucts[index].qtd =  state.procucts[index].qtd - 1
         }
 
