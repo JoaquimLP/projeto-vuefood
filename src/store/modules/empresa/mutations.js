@@ -14,5 +14,9 @@ const mutations = {
   SET_PRODUCT_COMPANY (state, product){
     state.productsSelected = product
   },
+
+  SET_MESSA_EMPRESA (state, mesa){
+    state.mesaSelected = mesa
+  }
 }
 export default mutations

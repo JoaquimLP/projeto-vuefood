@@ -5,9 +5,6 @@ const state = {
 
   companySelected: {
     name: '',
-   /*  products: {
-      data: [],
-    }, */
   },
 
   categoriaCompanySelected: {
@@ -16,6 +13,13 @@ const state = {
 
   productsSelected: {
     data: [],
+  },
+
+  mesaSelected: {
+    mesa: {
+      uuid: '',
+      descricao: '',
+    },
   }
 }
 

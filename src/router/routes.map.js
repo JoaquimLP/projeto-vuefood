@@ -5,12 +5,19 @@ import Login from '@/views/pages/auth/Login'
 import Register from '@/views/pages/auth/Register'
 import Pedidos from '@/views/pages/auth/pedidos/Pedidos'
 import DetalhesPedidos from '@/views/pages/DetalhesPedidos'
+import LoadMesaEmpresa from '@/views/pages/LoadMesaEmpresa'
 
 const routes = [
   {
     path: '/',
     component: () => import('@/layouts/DefoultTemplate'),
     children: [
+      {
+        path: '/:token/:token_table',
+        component: LoadMesaEmpresa,
+        name: 'mesa.empresa',
+        props: true,
+      },
       {
         path: '/pedidos/:identify',
         component: DetalhesPedidos,

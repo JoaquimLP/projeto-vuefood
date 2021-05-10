@@ -98,6 +98,7 @@ export default {
     }),
 
     loadProdutos (){
+      console.log(this.company)
       const params = {
         token: this.company.uuid,
 
