@@ -17,6 +17,14 @@ const mutations = {
 
   SET_MESSA_EMPRESA (state, mesa){
     state.mesaSelected = mesa
-  }
+  },
+
+  REMOVE_MESSA_EMPRESA (state){
+    state.mesaSelected = {
+      uuid: '',
+      nome: '',
+      descricao: '',
+    }
+  },
 }
 export default mutations

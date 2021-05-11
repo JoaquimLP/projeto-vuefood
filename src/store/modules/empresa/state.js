@@ -18,6 +18,7 @@ const state = {
   mesaSelected: {
     mesa: {
       uuid: '',
+      nome: '',
       descricao: '',
     },
   }

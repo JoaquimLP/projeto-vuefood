@@ -18,6 +18,7 @@
               <div class="col-12">
                 <p><strong>Total de produtos:</strong> {{products.length}}</p>
                 <p><strong>Preco total:</strong> {{totalCart}}</p>
+                <p v-if="mesa.uuid"><strong>Mesa:</strong> {{mesa.nome}}</p>
                 <div class="form-group">
                   <div class="mb-3">
                     <textarea name="comentario" v-model="comentario" class="form-control" id="" cols="30" rows="2" placeholder="Comentario (opcional)"></textarea>
@@ -40,6 +41,7 @@
                 <div class="col-6">
                   <p><strong>Total de produtos:</strong> {{products.length}}</p>
                   <p><strong>Preco total:</strong> {{totalCart}}</p>
+                  <p v-if="mesa.uuid"><strong>Mesa:</strong> {{mesa.nome}}</p>
                   <div class="form-group">
                     <div class="mb-3">
                       <textarea name="comentario" v-model="comentario" class="form-control" id="" cols="30" rows="2" placeholder="Comentario (opcional)"></textarea>
@@ -77,6 +79,7 @@ export default {
       user: state => state.auth.me,
       authenticated: state => state.auth.authenticated,
       company: state => state.empresa.companySelected,
+      mesa: state => state.empresa.mesaSelected,
     }),
 
     totalCart () {
@@ -117,6 +120,11 @@ export default {
         ]
 
       }
+
+      if(this.mesa.uuid){
+        params.mesa = this.mesa.uuid
+      }
+
       this.$store.dispatch(actions, params)
         .then(response => {
           this.$toast.success("Pedido realizado com sucesso");

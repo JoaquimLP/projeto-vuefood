@@ -2,6 +2,7 @@
     <div>
       <!-- About Tenant and Categories -->
     <h1 class="my-4 title-tenant text-center">{{company.nome}}</h1>
+    <h2 v-if="mesa.nome">Mesa: {{mesa.nome}} <a href="#" @click.prevent="removerMesa">x</a></h2>
     <div class="row">
 
 
@@ -72,6 +73,7 @@ export default {
 
     ...mapState({
       company: state => state.empresa.companySelected,
+      mesa: state => state.empresa.mesaSelected,
       categorias: state => state.empresa.categoriaCompanySelected,
       products: state => state.empresa.productsSelected,
 
@@ -95,10 +97,10 @@ export default {
 
     ...mapMutations({
       addProdCart: 'ADD_PRODUCT_CART',
+      removerMesa: 'REMOVE_MESSA_EMPRESA',
     }),
 
     loadProdutos (){
-      console.log(this.company)
       const params = {
         token: this.company.uuid,
 
