@@ -32,6 +32,9 @@
 import {mapActions, mapState, mapMutations} from 'vuex'
 export default {
   mounted() {
+    if(this.company.nome){
+      return this.$router.push({name: 'site.products', params:{companyFlag: this.company.flag}})
+    }
     this.getEmpresas()
       .catch(response => {
         this.$toast.error("Fallha ao carregar as empresas");
@@ -44,7 +47,8 @@ export default {
     } */
 
     ...mapState({
-      empresas: state => state.empresa.item
+      empresas: state => state.empresa.item,
+      company: state => state.empresa.companySelected,
     })
   },
   methods: {

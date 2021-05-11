@@ -17,7 +17,7 @@
             <div class="modal-body">
               <div class="col-12">
                 <p><strong>Total de produtos:</strong> {{products.length}}</p>
-                <p><strong>Preco total:</strong> {{totalCart}}</p>
+                <p><strong>Preco total:</strong> {{$filters.formatPrice(totalCart)}}</p>
                 <p v-if="mesa.uuid"><strong>Mesa:</strong> {{mesa.nome}}</p>
                 <div class="form-group">
                   <div class="mb-3">
@@ -40,7 +40,7 @@
               <div class="row">
                 <div class="col-6">
                   <p><strong>Total de produtos:</strong> {{products.length}}</p>
-                  <p><strong>Preco total:</strong> {{totalCart}}</p>
+                  <p><strong>Preco total:</strong>  {{$filters.formatPrice(totalCart)}}</p>
                   <p v-if="mesa.uuid"><strong>Mesa:</strong> {{mesa.nome}}</p>
                   <div class="form-group">
                     <div class="mb-3">

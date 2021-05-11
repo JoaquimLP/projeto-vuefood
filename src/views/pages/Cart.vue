@@ -22,7 +22,7 @@
             <div class="d-flex py-4 justify-content-between align-items-center">
               <div class="col-10 d-flex align-items-center p-0">
                 <h6>
-                  <strong>R$ {{item.product.preco}} <span class="text-muted">x</span></strong>
+                  <strong>{{$filters.formatPrice(item.product.preco)}} <span class="text-muted">x</span></strong>
                 </h6>
                 <div class="quantity ml-4">
                   <input type="button" value="+" class="plus" @click.prevent="incrementQtdCart(item.product)">
@@ -41,7 +41,7 @@
         </div>
         <!-- END PRODUCT -->
         <div class="cart-price text-red">
-            Preço Total: <b>R$ {{totalCart}}</b>
+            Preço Total: <b>{{$filters.formatPrice(totalCart)}}</b>
         </div>
       </div>
       <!-- end card body -->

@@ -9,8 +9,8 @@
       <div class="col-sm-6">
         <ul class="p-0">
           <li><b>Número:</b> {{identify}}</li>
-          <li><b>Total:</b> {{meusPedidos.total}}</li>
-          <li><b>Data:</b> {{meusPedidos.date}}</li>
+          <li><b>Total:</b> {{$filters.formatPrice(meusPedidos.total)}}</li>
+          <li><b>Data:</b>{{$filters.formatDate(meusPedidos.date)}}</li>
           <li>
             <b>Status:</b>
             <span class="badge bg-success text-light p-2">{{meusPedidos.status}}</span>
@@ -48,7 +48,7 @@
           <a href="#"><img class="card-img-top" :src="produto.image" :alt="produto.produto"></a>
           <div class="details-card-body">
             <h5>{{produto.produto}}</h5>
-            <p><b>R$: {{produto.preco}}</b></p>
+            <p><b>R$: {{$filters.formatPrice(produto.preco)}}</b></p>
           </div>
         </div>
       </div>

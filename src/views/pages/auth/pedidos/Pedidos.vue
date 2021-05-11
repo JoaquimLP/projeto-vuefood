@@ -14,8 +14,8 @@
 
       <div class="my-table" v-for="(pedido, index) in pedidos" :key="index">
         <div class="text-center">{{pedido.identify}}</div>
-        <div class="text-center">{{pedido.date}}</div>
-        <div class="text-center">{{pedido.total}}</div>
+        <div class="text-center">{{$filters.formatDate(pedido.date)}}</div>
+        <div class="text-center">{{$filters.formatPrice(pedido.total)}}</div>
         <div class="text-center">
           <router-link :to="{name: 'site.pedidos', params: {identify: pedido.identify}}" class="btn btn-danger">Detalhes</router-link>
         </div>

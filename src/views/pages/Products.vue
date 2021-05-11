@@ -1,7 +1,7 @@
 <template>
     <div>
       <!-- About Tenant and Categories -->
-    <h1 class="my-4 title-tenant text-center">{{company.nome}}</h1>
+    <h1 class="my-4 title-tenant text-center">{{company.nome}} <a href="#" @click.prevent="removerEmpresaSelected">x</a></h1>
     <h2 v-if="mesa.nome">Mesa: {{mesa.nome}} <a href="#" @click.prevent="removerMesa">x</a></h2>
     <div class="row">
 
@@ -30,7 +30,7 @@
             <h4 class="card-title">
               <a href="#">{{produto.nome}}</a>
             </h4>
-            <h5>R$ {{produto.preco}}</h5>
+            <h5>{{$filters.formatPrice(produto.preco)}}</h5>
             <p class="card-text">{{produto.descricao}}</p>
           </div>
           <div :class="['card-footer', 'card-footer-custom', {'disabled': productInCart(produto)}]">
@@ -98,6 +98,7 @@ export default {
     ...mapMutations({
       addProdCart: 'ADD_PRODUCT_CART',
       removerMesa: 'REMOVE_MESSA_EMPRESA',
+      removerEmpresa: 'REMOVE_COMPANY_SELECTED',
     }),
 
     loadProdutos (){
@@ -133,6 +134,11 @@ export default {
         }
       })
       return inCart
+    },
+
+    removerEmpresaSelected() {
+      this.removerEmpresa()
+      return this.$router.push({name: 'site.home'})
     }
   },
 }

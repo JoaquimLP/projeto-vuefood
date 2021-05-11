@@ -19,6 +19,24 @@ const mutations = {
     state.mesaSelected = mesa
   },
 
+  REMOVE_COMPANY_SELECTED (state){
+    state.companySelected = {
+      name: '',
+    }
+    state.productsSelected = {
+      data: [],
+    }
+    state.categoriaCompanySelected = {
+      data: [],
+    }
+
+    state.mesaSelected = {
+      uuid: '',
+      nome: '',
+      descricao: '',
+    }
+  },
+
   REMOVE_MESSA_EMPRESA (state){
     state.mesaSelected = {
       uuid: '',
