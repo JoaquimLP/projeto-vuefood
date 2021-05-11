@@ -6,6 +6,7 @@ import Register from '@/views/pages/auth/Register'
 import Pedidos from '@/views/pages/auth/pedidos/Pedidos'
 import DetalhesPedidos from '@/views/pages/DetalhesPedidos'
 import LoadMesaEmpresa from '@/views/pages/LoadMesaEmpresa'
+import PageNotFound from '@/views/pages/errors/PageNotFound'
 
 const routes = [
   {
@@ -17,34 +18,52 @@ const routes = [
         component: LoadMesaEmpresa,
         name: 'mesa.empresa',
         props: true,
+        meta: {
+          title: 'Mesas'
+        },
       },
       {
         path: '/pedidos/:identify',
         component: DetalhesPedidos,
         name: 'site.pedidos',
         props: true,
+        meta: {
+          title: 'Detalhes do Pedido'
+        },
       },
       {
         path: '/meus-pedidos',
         component: Pedidos,
-        name: 'site.auth.pedidos'
+        name: 'site.auth.pedidos',
+        meta: {
+          title: 'Meus Pedidos'
+        },
       },
       {
         path: '/',
         component: Home,
-        name: 'site.home'
+        name: 'site.home',
+        meta: {
+          title: 'Home VueFood'
+        },
       },
       {
         path: '/loja/:companyFlag',
         component: Product,
         name: 'site.products',
         props: true,
+        meta: {
+          title: 'Produtos'
+        },
       },
 
       {
         path: '/carinho',
         component: Cart,
-        name: 'site.cart'
+        name: 'site.cart',
+        meta: {
+          title: 'Carrinho'
+        },
       },
 
     ]
@@ -56,14 +75,25 @@ const routes = [
       {
         path: '/entrar',
         component: Login,
-        name: 'auth.login'
+        name: 'auth.login',
+        meta: {
+          title: 'login'
+        },
       },
       {
         path: '/registrar',
         component: Register,
-        name: 'auth.register'
+        name: 'auth.register',
+        meta: {
+          title: 'Fazer cadastro'
+        },
       },
     ]
+  },
+
+  {
+    path: "/:catchAll(.*)",
+    component: PageNotFound,
   }
 
 ]
